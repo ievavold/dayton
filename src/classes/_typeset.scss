@@ -1,0 +1,40 @@
+@use '../mixins/typeset';
+
+.dayton-typeset > h1,
+h1.dayton-typeset {
+  @include typeset.h1;
+}
+
+.dayton-typeset > h2,
+h2.dayton-typeset {
+  @include typeset.h2;
+}
+
+.dayton-typeset > h3,
+h3.dayton-typeset {
+  @include typeset.h3;
+}
+
+.dayton-typeset > h4,
+h4.dayton-typeset {
+  @include typeset.h4;
+}
+
+.dayton-typeset > h5,
+h5.dayton-typeset {
+  @include typeset.h5;
+}
+
+.dayton-typeset > h6,
+h6.dayton-typeset {
+  @include typeset.h6;
+}
+
+.dayton-typeset > p,
+p.dayton-typeset,
+.dayton-typeset > ul,
+ul.dayton-typeset,
+.dayton-typeset > ol,
+ol.dayton-typeset {
+  @include typeset.text;
+}

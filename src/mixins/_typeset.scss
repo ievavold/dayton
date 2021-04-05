@@ -1,0 +1,46 @@
+@use 'type';
+@use 'layout';
+
+@mixin readable-width {
+  max-width: 64ex;
+}
+
+@mixin text {
+  @include readable-width;
+  @include layout.margin-vert('md');
+
+  line-height: 1.5;
+}
+
+@mixin header($font-size) {
+  @include layout.margin-vert('none');
+  @include type.font-size($font-size);
+
+  &:not(:first-child) {
+    @include layout.margin-top('base');
+  }
+}
+
+@mixin h1 {
+  @include header('xxl');
+}
+
+@mixin h2 {
+  @include header('xl');
+}
+
+@mixin h3 {
+  @include header('lg');
+}
+
+@mixin h4 {
+  @include header('md');
+}
+
+@mixin h5 {
+  @include header('body');
+}
+
+@mixin h6 {
+  @include header('sm');
+}

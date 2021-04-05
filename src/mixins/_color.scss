@@ -1,0 +1,50 @@
+$colors: (
+  identity: #c5050c,
+  accent: #0479a8,
+  light: #f7f7f7,
+  dark: #494949,
+);
+
+@function lookup-color($name) {
+  @if not map-has-key($map: $colors, $key: $name) {
+    @error "no color token name #{$name}";
+  }
+
+  @return map-get($map: $colors, $key: $name);
+}
+
+$text: (
+  identity: #f9f9f9,
+  accent: #f9f9f9,
+  light: #494949,
+  dark: #f9f9f9,
+);
+
+@function lookup-text($name) {
+  @if not map-has-key($map: $text, $key: $name) {
+    @error "no text token name #{$name}";
+  }
+
+  @return map-get($map: $text, $key: $name);
+}
+
+$tint: (
+  accent: (
+    hover: #0479a8,
+    focus: #0479a8,
+    active: #0479a8,
+  ),
+);
+
+@mixin border-color($name) {
+  border-color: lookup-color($name);
+}
+
+@mixin text($name) {
+  color: lookup-text($name);
+}
+
+@mixin background($name) {
+  background-color: lookup-color($name);
+  color: lookup-text($name);
+}

@@ -1,0 +1,85 @@
+$spacing: (
+  'none': 0rem,
+  'xs': 0.25rem,
+  'sm': 0.5rem,
+  'base': 1rem,
+  'md': 1.5rem,
+  'lg': 2rem,
+  'xl': 2.5rem,
+);
+
+@function spacing($name) {
+  @if not map-has-key($map: $spacing, $key: $name) {
+    @error "no spacing token named #{$name}";
+  }
+
+  @return map-get($map: $spacing, $key: $name);
+}
+
+/**
+ * MARGIN
+ */
+
+@mixin margin($name) {
+  margin: spacing($name);
+}
+
+@mixin margin-vert($top, $bottom: $top) {
+  margin-top: spacing($top);
+  margin-bottom: spacing($bottom);
+}
+
+@mixin margin-horiz($left, $right: $left) {
+  margin-right: spacing($right);
+  margin-left: spacing($left);
+}
+
+@mixin margin-top($name) {
+  margin-top: spacing($name);
+}
+
+@mixin margin-right($name) {
+  margin-right: spacing($name);
+}
+
+@mixin margin-bottom($name) {
+  margin-bottom: spacing($name);
+}
+
+@mixin margin-left($name) {
+  margin-left: spacing($name);
+}
+
+/**
+ * PADDING
+ */
+
+@mixin padding($name) {
+  padding: spacing($name);
+}
+
+@mixin padding-vert($name) {
+  padding-top: spacing($name);
+  padding-bottom: spacing($name);
+}
+
+@mixin padding-horiz($name) {
+  padding-right: spacing($name);
+  padding-left: spacing($name);
+}
+
+@mixin padding-top($name) {
+  padding-top: spacing($name);
+}
+
+@mixin padding-right($name) {
+  padding-right: spacing($name);
+}
+
+@mixin padding-bottom($name) {
+  padding-bottom: spacing($name);
+}
+
+@mixin padding-left($name) {
+  padding-left: spacing($name);
+}

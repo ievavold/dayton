@@ -1,0 +1,59 @@
+@use '../mixins/input';
+@use '../mixins/layout';
+
+.dayton-input {
+  display: flex;
+  flex-direction: column;
+
+  & + & {
+    @include layout.margin-top('md');
+  }
+
+  label {
+    @include input.block-label;
+  }
+
+  input[type='text'] {
+    @include input.textbox;
+  }
+
+  select {
+    @include input.dropdown;
+  }
+}
+
+.dayton-check,
+.dayton-radio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  label {
+    @include input.inline-label;
+  }
+}
+
+.dayton-check {
+  & + & {
+    @include layout.margin-top('sm');
+  }
+
+  input[type='checkbox'] {
+    @include input.check;
+  }
+}
+
+.dayton-radio {
+  & + & {
+    @include layout.margin-top('sm');
+  }
+
+  input[type='radio'] {
+    @include input.radio;
+  }
+}
+
+.dayton-check-group,
+.dayton-radio-group {
+  @include input.group;
+}

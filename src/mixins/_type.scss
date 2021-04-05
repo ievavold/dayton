@@ -1,0 +1,60 @@
+@use '../utils/math';
+
+/**
+ * FONT FAMILIES
+ */
+
+$families: (
+  'normal': (
+    'Roboto',
+    sans-serif,
+  ),
+);
+
+@mixin font-family($name) {
+  @if not map-has-key($map: $families, $key: $name) {
+    @error "no font-family token named #{$name}";
+  }
+
+  font-family: map-get($map: $families, $key: $name);
+}
+
+/**
+ * FONT SIZES
+ */
+
+$base: 1rem; // 16px
+
+$sizes: (
+  'sm': $base * math.major-second(-1),
+  'body': $base * math.major-second(0),
+  'md': $base * math.major-second(1),
+  'lg': $base * math.major-second(4),
+  'xl': $base * math.major-second(6),
+  'xxl': $base * math.major-second(8),
+);
+
+@mixin font-size($name) {
+  @if not map-has-key($map: $sizes, $key: $name) {
+    @error "no font-size token named #{$name}";
+  }
+
+  font-size: map-get($map: $sizes, $key: $name);
+}
+
+/**
+ * FONT WEIGHTS
+ */
+
+$weights: (
+  'normal': 400,
+  'medium': 500,
+);
+
+@mixin font-weight($name) {
+  @if not map-has-key($map: $weights, $key: $name) {
+    @error "no font-weight token named #{$name}";
+  }
+
+  font-weight: map-get($map: $weights, $key: $name);
+}

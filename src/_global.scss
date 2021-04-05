@@ -1,0 +1,15 @@
+@use 'mixins/type';
+@use 'mixins/color';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  @include type.font-family('normal');
+  @include color.background('light');
+
+  margin: 0;
+  font-size: 16px; // sets 1rem = 16px
+}

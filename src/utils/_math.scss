@@ -1,0 +1,21 @@
+@function pow($base, $exponent) {
+  $raised: 1;
+
+  @if $exponent == 0 {
+    @return 1;
+  }
+
+  @for $i from 1 through abs($exponent) {
+    $raised: $raised * $base;
+  }
+
+  @if $exponent < 0 {
+    @return 1 / $raised;
+  } @else {
+    @return $raised;
+  }
+}
+
+@function major-second($step: 0) {
+  @return pow(1.125, $step);
+}

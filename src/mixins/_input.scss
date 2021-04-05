@@ -1,0 +1,152 @@
+@use 'type';
+@use 'color';
+@use 'layout';
+@use '../utils/encode';
+
+@mixin block-label {
+  @include type.font-size('sm');
+  @include type.font-weight('medium');
+  @include layout.margin-bottom('sm');
+
+  line-height: 1;
+}
+
+@mixin inline-label {
+  @include type.font-size('body');
+  @include type.font-weight('normal');
+  @include layout.margin-left('sm');
+
+  line-height: 1;
+  position: relative;
+  top: 1px;
+}
+
+@mixin halo($inset: false, $color: 'accent', $opacity: 0.7) {
+  $color: color.lookup-color($color);
+  @if $inset {
+    box-shadow: inset 0 0 0 0.25rem transparentize($color, $opacity);
+  } @else {
+    box-shadow: 0 0 0 0.25rem transparentize($color, $opacity);
+  }
+}
+
+$input-border-width: 0.125rem; // 2px
+
+@mixin input-border($radius: 4px) {
+  @include color.border-color('dark');
+
+  border-width: $input-border-width; // 2px
+  border-style: solid;
+  border-radius: $radius;
+
+  &:focus {
+    @include color.border-color('accent');
+    @include halo;
+
+    outline: none;
+  }
+}
+
+@mixin input-background {
+  @include color.text('light');
+
+  background-color: white;
+}
+
+@mixin input-text {
+  @include type.font-size('body');
+  @include type.font-family('normal');
+  @include layout.padding-horiz('base');
+  @include layout.padding-vert('sm');
+
+  $line-height: 1.125rem;
+
+  height: $line-height + (2 * layout.spacing('sm')) + (2 * $input-border-width);
+  appearance: none;
+  line-height: $line-height;
+  color: inherit;
+}
+
+@mixin textbox {
+  @include input-border;
+  @include input-background;
+  @include input-text;
+}
+
+@mixin dropdown-icon {
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+
+  // Ensures the arrow always matches the text color
+  $stroke: encode.color(color.lookup-text('light'));
+
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='#{$stroke}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+@mixin dropdown {
+  @include input-border;
+  @include input-background;
+  @include input-text;
+  @include dropdown-icon;
+}
+
+@mixin checkable($icon) {
+  &:checked {
+    @include color.background('accent');
+
+    background-image: $icon;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &:focus {
+    @include color.border-color('accent');
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    background-color: silver;
+  }
+}
+
+$check-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+
+@mixin check {
+  @include layout.margin('none');
+  @include layout.padding('none');
+  @include input-border;
+  @include checkable($check-icon);
+
+  width: 1.25rem; // 20px
+  height: 1.25rem; // 20px
+  appearance: none;
+}
+
+$radio-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+
+@mixin radio {
+  @include layout.margin('none');
+  @include layout.padding('none');
+  @include input-border($radius: 50%);
+  @include checkable($radio-icon);
+
+  width: 1.25rem; // 20px
+  height: 1.25rem; // 20px
+  appearance: none;
+}
+
+@mixin group {
+  @include layout.margin-vert('lg');
+
+  & > :first-child {
+    @include layout.margin('none');
+    @include layout.margin-bottom('base');
+    @include layout.padding('none');
+    @include type.font-size('md');
+    @include type.font-weight('medium');
+
+    line-height: 1;
+  }
+}
