@@ -4,13 +4,14 @@
   "private": true,
   "description": "a stylesheet",
   "scripts": {
-    "build": "sass src/dayton.scss:dist/dayton.css"
+    "publish": "rm -rf dist && parcel build -o dist demo/index.html && gh-pages -d dist"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ievavold/dayton"
   },
   "devDependencies": {
+    "gh-pages": "^3.1.0",
     "parcel-bundler": "^1.12.5",
     "sass": "^1.32.8"
   }
