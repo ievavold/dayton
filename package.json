@@ -4,7 +4,7 @@
   "private": true,
   "description": "a stylesheet",
   "scripts": {
-    "publish": "rm -rf dist && parcel build -d dist demo/index.html && gh-pages -d dist"
+    "publish": "rm -rf dist && parcel build -d dist --public-url '/dayton' demo/index.html && gh-pages -d dist"
   },
   "repository": {
     "type": "git",
