@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "description": "a stylesheet",
+  "scripts": {
+    "build": "sass src/dayton.scss:dist/dayton.css"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ievavold/dayton"
