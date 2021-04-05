@@ -1,6 +1,7 @@
 # directories
 /node_modules
 /dist
+/.cache
 
 # files
 .DS_Store
