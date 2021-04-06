@@ -1,0 +1,78 @@
+@use '../../mixins/type';
+@use '../../mixins/color';
+@use '../../mixins/input';
+@use '../../mixins/layout';
+
+.dayton-combobox {
+  &__label,
+  &__select {
+    display: none;
+  }
+
+  &__spacer {
+    height: input.$input-line-height + (2 * layout.spacing('sm')) +
+      (2 * input.$input-border-width);
+    position: relative;
+  }
+
+  &__overlay {
+    @include input.input-border;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    overflow: hidden;
+  }
+
+  &__listbox {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: none;
+    background: white;
+
+    &--open {
+      display: block;
+    }
+
+    li {
+      @include layout.padding-vert('sm');
+      @include layout.padding-horiz('base');
+      @include type.font-size('body');
+
+      line-height: 1;
+    }
+
+    li + li {
+      border-top: 1px solid #eee;
+    }
+
+    li:hover {
+      background: lighten($color: color.lookup-color('accent'), $amount: 63%);
+      cursor: pointer;
+    }
+
+    li.dayton-combobox--selected {
+      background: lighten($color: color.lookup-color('accent'), $amount: 50%);
+    }
+  }
+}
+
+input[type='text'].dayton-combobox__input {
+  @include input.dropdown-icon;
+
+  width: 100%;
+  height: input.$input-line-height + (2 * layout.spacing('sm'));
+  display: block;
+  border-style: none;
+
+  &--open,
+  &:focus {
+    box-shadow: none;
+    border-bottom: 1px solid #eee;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}

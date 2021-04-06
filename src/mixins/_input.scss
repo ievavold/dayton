@@ -39,6 +39,7 @@ $input-border-width: 0.125rem; // 2px
   border-style: solid;
   border-radius: $radius;
 
+  &:focus-within,
   &:focus {
     @include color.border-color('accent');
     @include halo;
@@ -53,17 +54,18 @@ $input-border-width: 0.125rem; // 2px
   background-color: white;
 }
 
+$input-line-height: 1.125rem;
+
 @mixin input-text {
   @include type.font-size('body');
   @include type.font-family('normal');
   @include layout.padding-horiz('base');
   @include layout.padding-vert('sm');
 
-  $line-height: 1.125rem;
-
-  height: $line-height + (2 * layout.spacing('sm')) + (2 * $input-border-width);
+  height: $input-line-height + (2 * layout.spacing('sm')) +
+    (2 * $input-border-width);
   appearance: none;
-  line-height: $line-height;
+  line-height: $input-line-height;
   color: inherit;
 }
 
