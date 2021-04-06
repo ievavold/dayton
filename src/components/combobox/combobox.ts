@@ -250,8 +250,8 @@ export class DaytonCombobox {
       case 'focus': {
         if (state.state === 'closed') {
           const filtered = state.choice
-            ? fuzzy(state.choice.label, this.allItems)
-            : this.allItems;
+            ? fuzzy(state.choice.label, this.allItems).slice(0, 10)
+            : this.allItems.slice(0, 10);
           const selected = 0;
           return state.choice
             ? { state: 'complete', choice: state.choice, filtered, selected }
