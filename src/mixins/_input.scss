@@ -65,6 +65,7 @@ $input-line-height: 1.125rem;
   height: $input-line-height + (2 * layout.spacing('sm')) +
     (2 * $input-border-width);
   appearance: none;
+  -webkit-appearance: none;
   line-height: $input-line-height;
   color: inherit;
 }
@@ -124,6 +125,7 @@ $check-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' v
   width: 1.25rem; // 20px
   height: 1.25rem; // 20px
   appearance: none;
+  -webkit-appearance: none;
 }
 
 $radio-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
@@ -137,6 +139,7 @@ $radio-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' v
   width: 1.25rem; // 20px
   height: 1.25rem; // 20px
   appearance: none;
+  -webkit-appearance: none;
 }
 
 @mixin group {
