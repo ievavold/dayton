@@ -12,35 +12,35 @@
   line-height: 1.5;
 }
 
-@mixin header($font-size) {
+@mixin header($font-size, $margin-top) {
   @include layout.margin-vert('none');
   @include type.font-size($font-size);
 
   &:not(:first-child) {
-    @include layout.margin-top('base');
+    @include layout.margin-top($margin-top);
   }
 }
 
 @mixin h1 {
-  @include header('xxl');
+  @include header('xxl', 'none');
 }
 
 @mixin h2 {
-  @include header('xl');
+  @include header('xl', 'xl');
 }
 
 @mixin h3 {
-  @include header('lg');
+  @include header('lg', 'xl');
 }
 
 @mixin h4 {
-  @include header('md');
+  @include header('md', 'md');
 }
 
 @mixin h5 {
-  @include header('body');
+  @include header('body', 'md');
 }
 
 @mixin h6 {
-  @include header('sm');
+  @include header('sm', 'md');
 }
