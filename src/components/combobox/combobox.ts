@@ -40,6 +40,7 @@ export class DaytonCombobox {
   private comboboxId = `${this.uniqueId}-combobox`;
   private inputId = `${this.uniqueId}-input`;
   private listboxId = `${this.uniqueId}-listbox`;
+  private selectedId = `${this.uniqueId}-selected`;
 
   private labelElem: HTMLLabelElement;
   private comboboxElem: HTMLDivElement;
@@ -196,14 +197,23 @@ export class DaytonCombobox {
     ) {
       const oldSelected = oldState.state !== 'closed' ? oldState.selected : -1;
       if (oldSelected >= 0) {
-        this.listboxElem.children
-          .item(oldSelected)
-          ?.classList?.remove(selectedClass);
+        const oldSelectedElem = this.listboxElem.children.item(oldSelected);
+        if (oldSelectedElem) {
+          oldSelectedElem.classList.remove(selectedClass);
+          oldSelectedElem.id = '';
+        }
       }
 
-      this.listboxElem.children
-        .item(this.state.selected)
-        ?.classList?.add(selectedClass);
+      const newSelectedElem = this.listboxElem.children.item(
+        this.state.selected,
+      );
+      if (newSelectedElem) {
+        newSelectedElem.classList.add(selectedClass);
+        newSelectedElem.id = this.selectedId;
+        this.inputElem.setAttribute('aria-activedescendant', this.selectedId);
+      } else {
+        this.inputElem.setAttribute('aria-activedescendant', '');
+      }
     }
 
     // True if the listbox should be cleared either because the list needs to
@@ -230,10 +240,12 @@ export class DaytonCombobox {
       this.state.filtered.forEach((item, index) => {
         const elem = document.createElement('li');
         elem.setAttribute('value', item.value as string);
+        elem.setAttribute('role', 'option');
         elem.innerText = item.label;
 
         if (index === state.selected) {
           elem.classList.add(selectedClass);
+          elem.id = this.selectedId;
         }
 
         elem.addEventListener('mousedown', event => {
