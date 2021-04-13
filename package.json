@@ -4,6 +4,7 @@
   "private": true,
   "description": "a stylesheet",
   "scripts": {
+    "start": "parcel serve demo/index.html",
     "publish": "rm -rf dist && parcel build -d dist --public-url '/dayton' demo/index.html && gh-pages -d dist"
   },
   "repository": {
