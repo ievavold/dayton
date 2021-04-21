@@ -32,6 +32,30 @@
         <a href="https://github.com/ievavold/dayton">GitHub</a>.
       </p>
 
+      <h2>Form validation</h2>
+
+      <p>
+        Textboxes, dropdowns, and similarily structured inputs should use inline
+        validation. If the input was required or the provided value didn&rsquo;t
+        match an expected pattern the component should provide a message
+        explaining which input caused the error and advise the user how to
+        remedy the error.
+      </p>
+
+      <div class="dayton-input dayton-input--error">
+        <label for="city-textbox">City</label>
+        <input
+          id="city-textbox"
+          type="text"
+          aria-describedby="required-textbox-message"
+        />
+        <div class="dayton-input__message">
+          <span id="required-textbox-message">
+            <strong>City</strong> is required.
+          </span>
+        </div>
+      </div>
+
       <h2>Typography</h2>
 
       <p>
@@ -231,6 +255,34 @@
           <option value="mewtwo">Mewtwo</option>
           <option value="mew">Mew</option>
         </select>
+      </div>
+
+      <h2>Sliders</h2>
+
+      <p>
+        By building components from scratch we can ensure that all the
+        components look and behave consistent while also conforming to best
+        accessibility practices.
+      </p>
+
+      <div class="dayton-range">
+        <label>Schedule</label>
+        <input
+          class="dayton-range__input-min"
+          type="number"
+          id="schedule-start"
+          min="21600"
+          max="79200"
+          step="900"
+        />
+        <input
+          class="dayton-range__input-max"
+          type="number"
+          id="schedule-end"
+          min="21600"
+          max="79200"
+          step="900"
+        />
       </div>
 
       <h2>Checks and radios</h2>

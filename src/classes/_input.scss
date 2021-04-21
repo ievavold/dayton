@@ -17,8 +17,17 @@
     @include input.textbox;
   }
 
+  &--error input[type='text'],
+  &--error select {
+    // @include input.input-border($state: 'error');
+  }
+
   select {
     @include input.dropdown;
+  }
+
+  &__message {
+    @include input.message;
   }
 }
 

@@ -1,0 +1,15 @@
+@use '../../mixins/type';
+@use '../../mixins/color';
+@use '../../mixins/input';
+@use '../../mixins/layout';
+
+.dayton-range {
+  label {
+    @include input.block-label;
+  }
+
+  &__input-min,
+  &__input-max {
+    display: none;
+  }
+}

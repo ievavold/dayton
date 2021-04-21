@@ -10,8 +10,7 @@
   }
 
   &__spacer {
-    height: input.$input-line-height + (2 * layout.spacing('sm')) +
-      (2 * input.$input-border-width);
+    height: input.$input-line-height + (2 * layout.spacing('sm')) + 0.125rem;
     position: relative;
   }
 
@@ -43,9 +42,6 @@
       @include type.font-size('body');
 
       line-height: 1;
-    }
-
-    li + li {
       border-top: 1px solid #eee;
     }
 
@@ -71,7 +67,6 @@ input[type='text'].dayton-combobox__input {
   &--open,
   &:focus {
     box-shadow: none;
-    border-bottom: 1px solid #eee;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
